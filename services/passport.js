@@ -13,12 +13,12 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
   // otherwise, call done with false
   User.findOne({ email: email }, function(err, user) {
     if (err) { return done(err); }
-    if (!user) { return done(null, false); }
+    if (!user) { return done(null, false, {message: "Incorrect email"}); }
 
     // compare passwords - is `password` equal to user.password?
     user.comparePassword(password, function(err, isMatch) {
       if (err) { return done(err); }
-      if (!isMatch) { return done(null, false); }
+      if (!isMatch) { return done(null, false, {message: "Incorrect password"}); }
 
       // if succesfull passport will make user available under req.user
       return done(null, user);
