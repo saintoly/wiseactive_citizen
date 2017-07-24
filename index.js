@@ -6,7 +6,7 @@ const routes = require('./routes/routes')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 
-mongoose.connect('mongodb://ola:olawole777@ds119533.mlab.com:19533/wiseactive', {
+mongoose.connect(process.env.mlab, {
   useMongoClient: true
 })
 app.use(express.static(__dirname + '/public'));
@@ -17,7 +17,7 @@ app.use(express.static(__dirname + '/public'));
 // Morgan is a HTTP request logger middleware for node.js
 // BodyParser is going to parse everything to json format
 
-app.use(morgan('combined'))
+app.use(morgan('combined'))		
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
