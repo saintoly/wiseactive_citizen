@@ -1,1 +1,2 @@
-module.exports = '1235923e23434'
+process.env.secret = '1235923e23434'
+	

@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV != "production") {
+	require("./config/secret")
+}
+
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
