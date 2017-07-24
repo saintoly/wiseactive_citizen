@@ -1,6 +1,10 @@
 const User = require('../models/user')
 const jwt = require('jwt-simple')
-const secret = require('../config/secret')
+if (process.env.NODE_ENV !== "production") {
+  const secret = require("../config/secret")
+} else {
+  const secret = process.env.secret
+}
 
 // We never want to save a plain password
 // If someone has access to our database

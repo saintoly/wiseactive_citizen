@@ -6,7 +6,7 @@ const routes = require('./routes/routes')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 
-mongoose.connect(process.env.mlab, {
+mongoose.connect(process.env.mlab || "mongodb://localhost/auth", {
   useMongoClient: true
 })
 app.use(express.static(__dirname + '/public'));
