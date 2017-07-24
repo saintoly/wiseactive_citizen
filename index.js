@@ -6,7 +6,7 @@ const routes = require('./routes/routes')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 
-mongoose.connect('mongodb://localhost/auth', {
+mongoose.connect('mongodb://ola:olawole777@ds119533.mlab.com:19533/wiseactive', {
   useMongoClient: true
 })
 app.use(express.static(__dirname + '/public'));
