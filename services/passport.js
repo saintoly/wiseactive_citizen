@@ -2,7 +2,6 @@ const passport = require('passport')
 const User = require('../models/user')
 const JwtStrategy = require('passport-jwt').Strategy
 const ExtractJwt = require('passport-jwt').ExtractJwt
-const secret = require('../config/secret')
 const LocalStrategy = require('passport-local')
 // local stategy, auth user using email and password, local refers to local database
 // Create local Strategy
@@ -43,7 +42,7 @@ const cookieExtractor = (req) => {
 // we extract it from the cookies
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
-  secretOrKey: secret
+  secretOrKey: process.env.secret
 }
 
 // create JWT Strategy
