@@ -1,17 +1,12 @@
 const User = require('../models/user')
 const jwt = require('jwt-simple')
-if (process.env.NODE_ENV !== "production") {
-  const secret = require("../config/secret")
-} else {
-  const secret = process.env.secret
-}
 
 // We never want to save a plain password
 // If someone has access to our database
 // We want to store an encrypted version
 
 tokenForUser = (user) => {
-  return jwt.encode({ sub: user.id }, secret)
+  return jwt.encode({ sub: user.id }, process.env.secret)
 }
 
 module.exports = {

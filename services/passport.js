@@ -1,8 +1,3 @@
-if (process.env.NODE_ENV !== "production") {
-  const secret = require("../config/secret")
-} else {
-  const secret = process.env.secret
-}
 
 const passport = require('passport')
 const User = require('../models/user')
@@ -49,7 +44,7 @@ const cookieExtractor = (req) => {
 // we extract it from the cookies
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
-  secretOrKey: secret
+  secretOrKey: process.env.secret
 }
 
 // create JWT Strategy
