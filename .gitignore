@@ -1,3 +1,2 @@
-config/secret.js
 node_modules
-.DS_Store
+config/secret.js
