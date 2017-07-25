@@ -1,7 +1,6 @@
 if (process.env.NODE_ENV != "production") {
 	require("./config/secret")
 }
-
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
@@ -10,16 +9,20 @@ const routes = require('./routes/routes')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 
+
+
 mongoose.connect(process.env.mlab || "mongodb://localhost/auth", {
   useMongoClient: true
-})
+})	
 app.use(express.static(__dirname + '/public'));
 //app.use('/', express.static(__dirname + '/public'));
+
 
 //App setup
 // Middleware in express, any incoming request is going to be passed into morgan and bodyParser
 // Morgan is a HTTP request logger middleware for node.js
 // BodyParser is going to parse everything to json format
+
 
 app.use(morgan('combined'))		
 app.use(cookieParser())
