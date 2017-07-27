@@ -1,12 +1,13 @@
 if (process.env.NODE_ENV != "production") {
 	require("./config/secret")
 }
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
-const morgan = require('morgan')
-const routes = require('./routes/routes')
-const mongoose = require('mongoose')
+const express      = require('express')
+const app          = express()
+const bodyParser   = require('body-parser')
+const morgan       = require('morgan')
+const routes       = require('./routes/routes')
+const blogs        = require('./routes/blogs.js');
+const mongoose     = require('mongoose')
 const cookieParser = require('cookie-parser')
 
 
@@ -30,9 +31,9 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 app.use('/', routes)
+app.use('/blogs', blogs);
 
 app.set('view engine', 'ejs')
-
 //Server setup
 //When hosting your application on another service (like Heroku, Nodejitsu, and AWS), your host may independently configure the process.env.PORT variable for you; after all, your script runs in their environment.
 

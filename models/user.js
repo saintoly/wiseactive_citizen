@@ -8,7 +8,9 @@ const userSchema = new Schema({
   name: {type: String, required: [true,'Name is required']},
   surname: {type: String, required: [true,'Surname is required']},
   email: {type: String, unique: true, lowercase: true, required: [true, 'Email is required']},
-  password: {type: String, required: [true,'Password is required']}
+  password: {type: String, required: [true,'Password is required']},
+  comments: [{type: Schema.Types.ObjectId, ref: 'comment'}],
+  blogs: [{type: Schema.Types.ObjectId, ref: 'blog'}]
 })
 
 // On Save hook, encrypt password

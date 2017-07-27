@@ -128,6 +128,50 @@
 
         </div>
 
+        <hr class="featurette-divider" id="services">
+
+
+        <% if(blogs) { %>
+            <h1>Your Articles</h1>
+            <% blogs.forEach( blog => { %>
+                <ul>
+                    
+                    <li> <b><%= blog.author %></b></li>
+                    <li> <%= blog.comment %></li>
+                    <span><%= blog.created.toDateString() %></span>
+                    <li><a href="/blogs/<%= blog.id %>"><button>View Article</button></a></li>
+                  
+                    </li>
+                </ul>
+                <hr>
+
+            <% }) %>
+        <% } %>
+
+
+
+        <!-- Second Featurette -->
+        <div class="featurette" >
+           
+            <h2 class="featurette-heading">Author <br>
+                <span class="text-muted">We are the communities of Nigeria.</span>
+            </h2>
+
+
+                
+
+            <p class="lead"><h2>
+                
+             gjhpajes-lgjèmaàòGkùaeègkadoòjl
+
+
+            </h2>
+
+    </h2>
+    <a href="/blogs"><button>Show all blogs</button></a>
+    <a href="/blogs/create/"><button>write an Article!</button></a></p>
+        </div>
+
         <hr class="featurette-divider">
 
         <!-- Footer -->

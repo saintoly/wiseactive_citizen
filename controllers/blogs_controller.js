@@ -7,7 +7,7 @@ const controller = {
 			if(error){
 				console.log(error);
 			} else {
-				res.render('blog', {blogs: blogs});
+				res.render('index', {blogs: blogs});
 			}
 		})
 	},
