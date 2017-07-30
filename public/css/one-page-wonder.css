@@ -4,6 +4,31 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+/*submit button hover effect*/
+
+.btn-lg
+{
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+.btn{transition:all 0.8s;-o-transition:all 0.8s;-moz-transition:all 0.8s;-webkit-transition:all 0.8s;border-radius:0px;margin-top:10px}
+.btn-rounded{border-radius:50px}
+.btn-round-tosquare:hover{border-radius:0px}
+
+
+.btn-bordered-success{color:#5CB85C;background:#FFFFFF;border:2px solid #5CB85C}
+
+.btn-bordered-success:hover{color:#FFFFFF;background:#5CB85C;border:2px solid #FFFFFF}
+
+
+
+.container.main {
+    margin-top: 7.0em;
+}
+
+
 body {
     margin-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
@@ -15,9 +40,9 @@ body {
     display: block;
     width: 100%;
     text-align: left;
-    image-rendering: <img src="/img/nig.jpg">
-   /* background: url('http://placehold.it/1900x500') no-repeat center center scroll;
-    -webkit-background-size: cover;
+    image-rendering: <img src="../public/img/home-bg.jpg">
+  /*  background: url('https://cdn.atlassbx.com/FB/11087209668837/AZR_FY17_welcome_NL_BE_300x250_BAN_Sept-16.png') no-repeat center center scroll;
+    -webkit-background-size:cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;*/
@@ -122,7 +147,7 @@ footer {
 
 @media(max-width:768px) {
     .container {
-        margin: 0 15px;
+        margin: 0 30px;
     }
 
     .featurette-divider {

@@ -13,9 +13,9 @@ const requireSignin = passport.authenticate('local', { failureRedirect: '/signin
 // 3 arguments, next is mostly used for error handling
 // first send them trough requireAuth, if they pass only then let them get to the callback function
 router.get('/', (req, res) => {
-  res.render('index')
+  		res.redirect('/blogs') // or redirect to the one that works
 })
- 
+
 //router.get('/home:id', requireAuth.private);
 
 router.get('/signup', Authentication.newUser);

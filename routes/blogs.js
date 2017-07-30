@@ -3,10 +3,12 @@ const express             = require('express'),
       BlogsController  = require('../controllers/blogs_controller');
 
 
+
  router.get('/', BlogsController.viewAllBlogs);
  router.get('/create', BlogsController.viewCreateBlog);
  router.get('/:id', BlogsController.viewChoice);
  router.get('/update/:id', BlogsController.viewUpdate);
+
 
 
 router.post('/create', BlogsController.createBlog);
