@@ -6,6 +6,50 @@
 
 /*submit button hover effect*/
 
+.super-container {
+    margin: auto;
+}
+
+.main-page-container {
+    margin: auto !important;
+}
+
+.main-page-margin-container {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.header-main-container {
+    background: url('https://talk.birmingham.io/uploads/default/original/1X/114eacfdea2d99d154e7a6e86b5fcbfb3a15ad67.jpg') no-repeat center center scroll;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.header-container {
+    margin: auto;
+}
+
+.header-text-container {
+    text-align: center;
+}
+
+.header-text-container h2 {
+    font-size: 45px;
+}
+
+.header-text-container h3 {
+
+}
+
+.buttons-main-container {
+    display: flex;
+}
+
+.buttons-container {
+    margin: auto;
+}
+
 .btn-lg
 {
     padding: 10px 16px;
@@ -32,8 +76,19 @@
 body {
     margin-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
-.container {
-    width: -10%; 
+.container { 
+}
+
+
+.header-image {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: url('https://talk.birmingham.io/uploads/default/original/1X/114eacfdea2d99d154e7a6e86b5fcbfb3a15ad67.jpg') no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 .header-image {
@@ -60,8 +115,8 @@ body {
 
 .headline h2 {
     font-size: 77px;
-    background: #fff;
-    background: rgba(255,255,255,0.9);
+ /*   background: #fff;
+    background: rgba(255,255,255,0.9);*/
 }
 
 .featurette-divider {
@@ -147,7 +202,6 @@ footer {
 
 @media(max-width:768px) {
     .container {
-        margin: 0 30px;
     }
 
     .featurette-divider {

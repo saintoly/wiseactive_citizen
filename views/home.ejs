@@ -48,6 +48,9 @@
 
 <body>
 
+ <!-- Super container -->   
+    <div class="super-container">
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -59,7 +62,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"></a>
+                <a class="navbar-brand" href="#">Wiseactive</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -89,24 +92,34 @@
     </nav>
 
     <!-- Full Width Image Header -->
-    <header class="header-image">
-        <div class="headline">
-            <div class="container">
-                   <h3>Welcome <%= name %></h3>
+    <div class="header-main-container">
+        <div class="header-container">
+            
 
-               <h2>Post your Governmental and ethnic opinion to improve your<br> local community in Nigeria.<br>
+                <div class="header-text-container">
+
+                   <h3 style="color: white">Welcome <%= name %></h3>
+
+               <h2 style="color: white;">Post your Governmental and ethnic<br> opinion to improve your<br> local community in Nigeria.<br>
+                
                 </h2>
-
+                <h3 style="color: white">You can read and paticipate in your local languages.</h3> 
+                </div>
+       </div>
+          </div>
+          </div>
                  <div class="popup" onclick="myFunction()"><h3><a href="#"><h2> <%= name %>, It's time to Post an article.</h2></a></h3>
                       <span class="popuptext" id="myPopup"><h4>Coming soon we will get  back to you soon.</h4></span>
                       </div>
-                <h3>You can read and paticipate in your local languages.</h3>
+               
                   <div class="col-lg-5 col-lg-offset-2 col-sm-6" id="flag"><img class="flag" src="" alt="">
                     
                 </div>
             </div>
         </div>
     </header>
+
+    
 
     <!-- Page Content -->
     <div class="container">
