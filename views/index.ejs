@@ -133,6 +133,28 @@
 
         <hr class="featurette-divider" id="about">
 
+                    <% if(blogs) { %>
+            <h1>Your Articles</h1>
+            <% blogs.forEach( blog => { %>
+                <ul>
+                    
+                    <li> <b><%= blog.author %></b></li>
+                    <li> <%= blog.comment %></li>
+                    <span><%= blog.created.toDateString() %></span>
+                    
+                  
+                    </li>
+                </ul>
+                <hr>
+
+            <% }) %>
+        <% } %>
+
+          <a href="/blogs"><button>Show all blogs</button></a>
+        </div>
+
+        <hr class="featurette-divider" id="about">
+
         <!-- First Featurette -->
         <div class="featurette">
             <img class="featurette-image img-circle img-responsive pull-right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/2009_National_Arts_Theatre_Lagos_Nigeria_6350723082.jpg/250px-2009_National_Arts_Theatre_Lagos_Nigeria_6350723082.jpg">

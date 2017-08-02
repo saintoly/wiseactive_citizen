@@ -1,9 +1,6 @@
 const User = require('../models/user')
 const jwt = require('jwt-simple')
 
-
-ollaaaaaaaaaa
-
 // We never want to save a plain password
 // If someone has access to our database
 // We want to store an encrypted version
@@ -68,8 +65,8 @@ module.exports = {
   // User has already had their email and password auth'd
     // We need to give them a token
    //var name = req.body.name
-    res.cookie('jwt', tokenForUser(req.user), {maxAge: 3600000 * 24, httpOnly: false})
-    res.render('home', {name: req.user.name})
+   res.cookie('jwt', tokenForUser(req.user), {maxAge: 3600000 * 24, httpOnly: false})
+  res.render('home', {blogs: undefined, name: undefined})
   },
   
   signout(req, res, next) {

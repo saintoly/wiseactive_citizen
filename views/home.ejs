@@ -98,7 +98,8 @@
 
                 <div class="header-text-container">
 
-                   <h3 style="color: white">Welcome <%= name %></h3>
+                   <h3 style="color: white"> <% if(name) { %> Welcome <%= name %>   <% } %>
+</h3>
 
                <h2 style="color: white;">Post your Governmental and ethnic<br> opinion to improve your<br> local community in Nigeria.<br>
                 
@@ -108,7 +109,8 @@
        </div>
           </div>
           </div>
-                 <div class="popup" onclick="myFunction()"><h3><a href="#"><h2> <%= name %>, It's time to Post an article.</h2></a></h3>
+                 <div class="popup" onclick="myFunction()"><h3><a href="#"><h2><% if(name) { %> <%= name %>,  <% } %>
+ It's time to Post an article.</h2></a></h3>
                       <span class="popuptext" id="myPopup"><h4>Coming soon we will get  back to you soon.</h4></span>
                       </div>
                
@@ -125,6 +127,32 @@
     <div class="container">
 
         <hr class="featurette-divider"  id="about">
+
+
+         <% if(blogs) { %>
+            <h1>Your Articles</h1>
+            <% blogs.forEach( blog => { %>
+                <ul>
+                    
+                    <li> <b><%= blog.author %></b></li>
+                    <li> <%= blog.comment %></li>
+                    <span><%= blog.created.toDateString() %></span>
+                    <li><a href="/blogs/<%= blog.id %>"><button>View Article</button></a></li>
+                  
+                    </li>
+                </ul>
+                <hr>
+
+            <% }) %>
+        <% } %>
+
+          <a href="/blogs"><button>Show all blogs</button></a>
+    <a href="/blogs/create/"><button>write an Article!</button></a></p>
+        </div>
+
+        <hr class="featurette-divider" id="about">
+
+
 
         <!-- First Featurette -->
         <div class="featurette">

@@ -17,15 +17,19 @@ viewCreateBlog(req, res) {
 
  createBlog(req, res) {
 
- 	Blog.create(req.body, (error, record) =>  {
+  const blog = {
+    blog: req.body.blog,
+    author: req.user.id
+  }
+
+ 	Blog.create(blog, (error, record) =>  {
  		if (error) {
  	 		console.log(error)
  	 	} else {
  	 		res.redirect('/blogs')
  	 	}
- 	}) 
+ 	})
   },
-
 
   viewChoice(req, res) { 
 

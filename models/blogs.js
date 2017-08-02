@@ -3,8 +3,8 @@ const mongoose     = require('mongoose'),
 
 
 var blogSchema = new Schema({
-	author: String,
-	comment: String,
+	author: { type: Schema.Types.ObjectId, ref: 'user' , required: true},
+	blog: {type: String, required: true},
 	created: {type: Date, default: Date.now},
 	comments: [{ type: Schema.Types.ObjectId, ref: 'comment' }]
 });

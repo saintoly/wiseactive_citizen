@@ -14,7 +14,7 @@ const cookieParser = require('cookie-parser')
 
 mongoose.connect(process.env.mlab || "mongodb://localhost/auth", {
   useMongoClient: true
-})	
+})
 app.use(express.static(__dirname + '/public'));
 //app.use('/', express.static(__dirname + '/public'));
 
