@@ -13,20 +13,7 @@ const requireSignin = passport.authenticate('local', { failureRedirect: '/signin
 const requireAuthHome = passport.authenticate('jwt', { failureRedirect: '/blogs', session: false })
 
 
-router.get('/', function(req, res, next) {
-  passport.authenticate('jwt', function(err, user, info) {
-
-  	Blog.find({}).populate('author').exec( (error, blogs) => {
-	    if (err) { return next(err) }
-	    if (!user) {
-	      	return res.render('index', { blogs, user: null})
-	    } else {
-	    	return res.render('index', { blogs, user})
-	    }
-  	})
-
-  })(req, res, next);
-});
+router.get('/', BlogsController.viewAllBlogs);
 
 
 router.get('/create', requireAuth, BlogsController.viewCreateBlog);

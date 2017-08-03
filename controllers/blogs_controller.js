@@ -1,13 +1,29 @@
 const Blog      = require('../models/blogs')
 const User      = require('../models/user')
 
+const passportService = require('../services/passport')
+const passport = require('passport')
+
 const controller = {
+  viewAllBlogs (req, res, next) {
+    passport.authenticate('jwt', function(err, user, info) {
 
-viewCreateBlog(req, res) {
-   res.render('create')
- },
+      Blog.find({}).populate('author').sort({'created': 'descending'}).exec( (error, blogs) => {
+        if (err) { return next(err) }
+        if (!user) {
+            return res.render('index', { blogs, user: null})
+        } else {
+          return res.render('index', { blogs, user})
+        }
+      })
+    })(req, res, next)
+  },
 
- createBlog(req, res) {
+  viewCreateBlog(req, res) {
+     res.render('create')
+   },
+
+  createBlog(req, res) {
 
   const blog = {
     blog: req.body.blog,
@@ -28,20 +44,18 @@ viewCreateBlog(req, res) {
  	 	}
  	})
   },
-
-  viewChoice(req, res) { 
-
-    Blog.findById(req.params.id, function(error, foundBlog) {
-    	if (error) {
-    		console.log(error);
-    	} else {
-        
-    		res.render('viewBlog', { blog: foundBlog });
-    	}
-    })
-
+  viewChoice (req, res, next) {
+    passport.authenticate('jwt', function(err, user, info) {
+      Blog.findById(req.params.id).populate('author').exec(function(error, blog) {
+        if (err) { return next(err) }
+        if (!user) {
+            return res.render('viewBlog', { blog, user: null})
+        } else {
+          return res.render('viewBlog', { blog, user})
+        }
+      })
+    })(req, res, next)
   },
-
 
   viewUpdate(req, res) {
      

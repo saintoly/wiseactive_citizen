@@ -1,24 +1,161 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>Blog</title>
+    <!-- Favicon -->
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <!-- Semanctic CSS
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
+     -->
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/style.css">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>WiseActive</title>
+
+
+
+    <!-- Custom CSS -->
+    <link href="/css/one-page-wonder.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
+
 <body>
 
-  <h4> <%= blog._id %> </h4>
-	<h1><%= blog.comment %></h1>
+    <!-- Super container -->   
+    <div class="super-container">
 
-	<h4> <%= blog.comment %></h4>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/blogs">Wiseactive</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    
+                     <li>
+                        <img style="max-width:100px; margin-top: 5px; background-color: transparent;"
+                        src="/img/logo1.png">
+                    </li>
+                      
+                    <li>
+                        <a href="/about">About</a>
+                    </li>
+                    <li>
+                        <a href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Situation</a>
+                    </li> 
+
+                    </ul>
+                    
+                    
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if (!user){ %>
+                            <li><a href="/signup/">Sign Up</a></li>
+                             <li style="margin-right: 20px"><a href="/signin/"> Log In</a></li>
+                        <% } else{ %>
+                            <li><a herf="#" >Signed In As <%= user.name%></a></li>
+                            <li style="margin-right: 20px"><a href="/signout">Log Out</a></li>
+                        <% } %>
+                    </ul>
+
+                    
+                    
+            
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+                </div>
+
+
+  
+    <!-- main container -->
+    <div class="main-page-container">
+    <div class ="main-page-margin-container">
+    <p><%= blog.author.name %></p>
+	<p><%= blog.blog %></p>
 	<span><%= blog.created.toDateString() %></span>
 
-	  <li><a href="/blogS/update/<%= blog._id %>"><button>Update Article</button></a></li>
-                    <li>
-                        <form action="/blogs/delete/<%= blog._id %>" method="POST">
-                            <input type="submit" value="Delete Article">
-                        </form>
-	
+	<% if (user && user._id == blog.author.id) { %>
+	 	<li><a href="/blogs/update/<%= blog._id %>"><button>Update Article</button></a></li>
+	                   
+	    <form action="/blogs/delete/<%= blog._id %>" method="POST">
+	        <input type="submit" value="Delete Article">
+	    </form>
+	<% } %>
+
+	<% if (user) { %>
+	<form action="/blogs/<%= blog._id %>/comment/create" method="post">
+	<input type="text" name="comment">
+	<input type="submit" value="Submit comment">
+	</form>
+	<% } else { %>
+	<a href="/signin"><button>Log in to write a comment</button></a>
+	<% } %>
  	<p><a href="/blogs"><button>Back to Blogs</button></a></p>
 
 
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>WiseActive Citizens Copyright 2017 - 2018</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    </div>
+
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+
+    <!-- end of main container -->
+    </div>
+    </div>
+
+    <!-- Super container -->   
+    </div> 
+
 </body>
+
 </html>
+

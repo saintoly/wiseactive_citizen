@@ -130,17 +130,19 @@
     <div class="">
        <div class="ui container">
 
-                    <% if(blogs) { %>
-            <h1>Your Articles</h1>
-            <% blogs.forEach( blog => { %>
-                <ul>
-                    <li><%= blog.author.name %></li>
-                    <li><%= blog.blog %></li>
-                    <span><%= blog.created.toDateString() %></span>
-                    </li>
-                </ul>
-            <% }) %>
-        <% } %>
+            <% if(blogs) { %>
+                <h1>Your Articles</h1>
+                 <a href="/blogs/create/"><button>write an Article!</button></a></p>
+                <% blogs.forEach( blog => { %>
+                    <ul>
+                        <li><%= blog.author.name %></li>
+                        <li><%= blog.blog %></li>
+                        <span><%= blog.created.toDateString() %></span>
+                        </li>
+                        <a href="/blogs/<%= blog.id %>"><button>View Article</button></a>
+                    </ul>
+                <% }) %>
+            <% } %>
         </div>
         <!-- Footer -->
         <footer>
