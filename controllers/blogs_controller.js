@@ -3,16 +3,6 @@ const User      = require('../models/user')
 
 const controller = {
 
-	viewAllBlogs(req, res) {
-
-    Blog.find({}).populate('author').exec( (error, blogs) => {
-        if(error){
-        console.log(error);
-      } else {
-        res.render('index', {blogs: blogs, currentUser: null});
-      }  
-    })
-	},
 viewCreateBlog(req, res) {
    res.render('create')
  },
@@ -86,6 +76,9 @@ delete(req,res) {
     }
   })
 
+  },
+  about(req, res) {
+    res.render('about', {user: null, blogs: null})
   }
 };
 

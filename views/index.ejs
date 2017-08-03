@@ -26,15 +26,6 @@
     <!-- Custom CSS -->
     <link href="/css/one-page-wonder.css" rel="stylesheet">
 
-
-
-    <% if (!currentUser){ %>
-            
-     <% } else{ %>
-         <li><a herf="#" >Signd In As <%= currentUser.username%></a></li>
-         
-     <% }%>
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -61,7 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Wiseactive</a>
+                <a class="navbar-brand" href="/blogs">Wiseactive</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -71,13 +62,9 @@
                         <img style="max-width:100px; margin-top: 5px; background-color: transparent;"
                         src="/img/logo1.png">
                     </li>
-                    
-                    <div class="navbar-brand">
-                    </div>
-                    </li>
                       
                     <li>
-                        <a href="#about">About</a>
+                        <a href="/about">About</a>
                     </li>
                     <li>
                         <a href="#services">Services</a>
@@ -86,20 +73,22 @@
                         <a href="#contact">Situation</a>
                     </li> 
 
-                    <li>
-                        
-
-                          <% if (!currentUser){ %>
-                           <li><a href="/signup/">Sign Up</a></li>
-                           <li><a href="/signin/"> Log In</a></li>
-                               <% } else{ %>
-                           <li><a herf="#" >Signd In As <%= currentUser.username%></a></li>
-                           <li ><a href="/logout">Log Out</a></li>
-                           <% }%>
-
-                    </li>
+                    </ul>
                     
-                </ul>
+                    
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if (!user){ %>
+                            <li><a href="/signup/">Sign Up</a></li>
+                             <li style="margin-right: 20px"><a href="/signin/"> Log In</a></li>
+                        <% } else{ %>
+                            <li><a herf="#" >Signed In As <%= user.name%></a></li>
+                            <li style="margin-right: 20px"><a href="/signout">Log Out</a></li>
+                        <% } %>
+                    </ul>
+
+                    
+                    
+            
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -121,19 +110,7 @@
                 </h2>
                 <h3 style="color: white">You can read and paticipate in your local languages.</h3> 
                 </div>
-
-                <div class="buttons-main-container">
-                <div class="buttons-container">
-                <div>
-
-                          <a href="/signin/" class="btn btn-rounded btn-round-tosquare btn-lg btn-bordered-success"> Login</a> 
-
-                           <a href="/signup/" class="btn btn-rounded btn-round-tosquare btn-lg btn-bordered-success"> Signup</a>
-                </div>
-                </div>
-                </div>
                 
-        
         </div>
     </div>
 
@@ -153,8 +130,6 @@
     <div class="">
        <div class="ui container">
 
-        <hr class="featurette-divider" id="about">
-
                     <% if(blogs) { %>
             <h1>Your Articles</h1>
             <% blogs.forEach( blog => { %>
@@ -164,100 +139,9 @@
                     <span><%= blog.created.toDateString() %></span>
                     </li>
                 </ul>
-                <hr>
-
             <% }) %>
         <% } %>
-
-          <a href="/blogs"><button>Show all blogs</button></a>
         </div>
-
-        <hr class="featurette-divider" id="about">
-
-        <!-- First Featurette -->
-        <div class="featurette">
-            <img class="featurette-image img-circle img-responsive pull-right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/2009_National_Arts_Theatre_Lagos_Nigeria_6350723082.jpg/250px-2009_National_Arts_Theatre_Lagos_Nigeria_6350723082.jpg">
-            <h2 class="featurette-heading">The place for local Communities to post videos and photos of the situation in their own town.
-                <span class="text-muted"><br><b>About Wiseactive Citizens, vision and mission.</b></span></h2>
-              <p class="lead">  Wiseactive.com is a new dynamic and innovative blog, platform where users and audience can share their Opinions, thoughts and ideas in the most effective and respectful manner.</p>
-
-               <p class="lead"><b>Vision Statement:</b> <br>Our aim is to educate and promote public awareness on various issues and keep our audience abreast, informed and active in public discourse as they exercise their malienable right of freedom of Opinion.</p>
-              <p class="lead"><b>Mission Statement:</b> <br>We are committed to engage our audience and readers through insightful fact-check and relevant content in our everyday lives and present a platform where they can express their ideas and opinions as global citizens.</p>
-            
-            <p class="lead"></p>
-        </div>
-
-        <hr class="featurette-divider" id="services">
-
-        <!-- Second Featurette -->
-        <div class="featurette" >
-            <img class="featurette-image img-circle img-responsive pull-left" src="http://csmnigeria.org/images/0dc85ebcd251a21c0a6f65efa1fe0733.jpg">
-            <h2 class="featurette-heading">WISEACTIVE CITIZENS <br>
-                <span class="text-muted">We are the communities of Nigeria.</span>
-            </h2>
-            <p class="lead">WiseActive is  everywhere in the world willing to bring this idea to reality. We all know some of the benefits of being a citizen of a country and its our enviable right to make demand on those whom we have elected to rule us and to also remind them of their promises and our expectations.<br> So we are all responsible to make good choice during elections. No one can buy you, and always remember that
-            Nigeria belongs to us all. No one person or group of persons is more important or more entitled than the other in this place we all call home</p>
-        </div>
-
-        <hr class="featurette-divider" id="contact">
-
-        <!-- Third Featurette -->
-        <div class="featurette">
-            <img class="featurette-image img-circle img-responsive pull-right" src="https://s-media-cache-ak0.pinimg.com/originals/af/e1/e0/afe1e0971969204f788526495f96f5d2.jpg">
-            <h2 class="featurette-heading">Be a Journalist
-                <span class="text-muted">We need to speak now.</span>
-            </h2>
-            <p class="lead">We are ready to work with everyone who want to bring the future close to our dear country, Be mindful of the sacrifices borne by our ancestors. We have made too many wrong choices in elections, And now it's well understood that we are in the  midst of crisis now. Our nation is in a situation whereby every one need to do something, your voice matters. Everyone must help in communication to become a journalist of your town, telling the world the truth of what is going on there. Because of violence and hatred our economy is badly weakened. A consequence of greed and irresponsibility on the part of some, but also our collective failure to make hard choices and prepare the nation for a new age.
-                     Homes have been lost; jobs shed; businesses shuttered. Our health sector is nothing to talk about; our school system has failed 80% and each day brings further evidence that we must change the way we think about our country.</p>
-
-        </div>
-<!--
-        <hr class="featurette-divider" id="services">
-
-
-        <% if(blogs) { %>
-            <h1>Your Articles</h1>
-            <% blogs.forEach( blog => { %>
-                <ul>
-                    
-                    <li> <b><%= blog.author %></b></li>
-                    <li> <%= blog.comment %></li>
-                    <span><%= blog.created.toDateString() %></span>
-                    <li><a href="/blogs/<%= blog.id %>"><button>View Article</button></a></li>
-                  
-                    </li>
-                </ul>
-                <hr>
-
-            <% }) %>
-        <% } %>
-
--->
-
-        <!-- Second Featurette -->
- <!--       <div class="featurette" >
-           
-            <h2 class="featurette-heading">Author <br>
-                <span class="text-muted">We are the communities of Nigeria.</span>
-            </h2>
-
-
-                
-
-            <p class="lead"><h2>
-                
-             gjhpajes-lgjèmaàòGkùaeègkadoòjl
-
-
-            </h2>
-
-    </h2>
-    <a href="/blogs"><button>Show all blogs</button></a>
-    <a href="/blogs/create/"><button>write an Article!</button></a></p>
-        </div>
-
-        <hr class="featurette-divider">
--->
         <!-- Footer -->
         <footer>
             <div class="row">

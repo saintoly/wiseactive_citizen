@@ -42,14 +42,6 @@
 
 }
 
-.buttons-main-container {
-    display: flex;
-}
-
-.buttons-container {
-    margin: auto;
-}
-
 .btn-lg
 {
     padding: 10px 16px;
