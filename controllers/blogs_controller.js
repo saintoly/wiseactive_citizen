@@ -1,15 +1,17 @@
 const Blog      = require('../models/blogs')
+const User      = require('../models/user')
 
 const controller = {
 
 	viewAllBlogs(req, res) {
-		Blog.find({}, (error, blogs) => {
-			if(error){
-				console.log(error);
-			} else {
-				res.render('index', {blogs: blogs});
-			}
-		})
+
+    Blog.find({}).populate('author').exec( (error, blogs) => {
+        if(error){
+        console.log(error);
+      } else {
+        res.render('index', {blogs: blogs, currentUser: null});
+      }  
+    })
 	},
 viewCreateBlog(req, res) {
    res.render('create')
@@ -22,11 +24,17 @@ viewCreateBlog(req, res) {
     author: req.user.id
   }
 
- 	Blog.create(blog, (error, record) =>  {
+ 	Blog.create(blog, (error, blog) =>  {
  		if (error) {
  	 		console.log(error)
  	 	} else {
- 	 		res.redirect('/blogs')
+      User.findById(req.user.id, (error, user) => {
+        user.blogs.push(blog.id)
+        user.save((error, savedUser) => {
+          if (error) console.log(error)
+          res.redirect('/blogs')
+        })
+      })
  	 	}
  	})
   },

@@ -110,7 +110,7 @@
           </div>
           </div>
                  <div class="popup" onclick="myFunction()"><h3><a href="#"><h2><% if(name) { %> <%= name %>,  <% } %>
- It's time to Post an article.</h2></a></h3>
+                             It's time to Post an article.</h2></a></h3>
                       <span class="popuptext" id="myPopup"><h4>Coming soon we will get  back to you soon.</h4></span>
                       </div>
                
@@ -135,7 +135,7 @@
                 <ul>
                     
                     <li> <b><%= blog.author %></b></li>
-                    <li> <%= blog.comment %></li>
+                    <li> <%= blog.blog %></li>
                     <span><%= blog.created.toDateString() %></span>
                     <li><a href="/blogs/<%= blog.id %>"><button>View Article</button></a></li>
                   

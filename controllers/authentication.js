@@ -42,7 +42,8 @@ module.exports = {
         name: name,
         surname: surname,
         email: email,
-        password: password
+        password: password,
+        createPassword: true
       });
 
       user.save(function(err) {
@@ -66,7 +67,7 @@ module.exports = {
     // We need to give them a token
    //var name = req.body.name
    res.cookie('jwt', tokenForUser(req.user), {maxAge: 3600000 * 24, httpOnly: false})
-  res.render('home', {blogs: undefined, name: undefined})
+  res.render('/index', {blogs: undefined, name: req.user.name, currentUser: req.user})
   },
   
   signout(req, res, next) {

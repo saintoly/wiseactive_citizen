@@ -26,6 +26,15 @@
     <!-- Custom CSS -->
     <link href="/css/one-page-wonder.css" rel="stylesheet">
 
+
+
+    <% if (!currentUser){ %>
+            
+     <% } else{ %>
+         <li><a herf="#" >Signd In As <%= currentUser.username%></a></li>
+         
+     <% }%>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -76,6 +85,19 @@
                     <li>
                         <a href="#contact">Situation</a>
                     </li> 
+
+                    <li>
+                        
+
+                          <% if (!currentUser){ %>
+                           <li><a href="/signup/">Sign Up</a></li>
+                           <li><a href="/signin/"> Log In</a></li>
+                               <% } else{ %>
+                           <li><a herf="#" >Signd In As <%= currentUser.username%></a></li>
+                           <li ><a href="/logout">Log Out</a></li>
+                           <% }%>
+
+                    </li>
                     
                 </ul>
             </div>
@@ -137,12 +159,9 @@
             <h1>Your Articles</h1>
             <% blogs.forEach( blog => { %>
                 <ul>
-                    
-                    <li> <b><%= blog.author %></b></li>
-                    <li> <%= blog.comment %></li>
+                    <li><%= blog.author.name %></li>
+                    <li><%= blog.blog %></li>
                     <span><%= blog.created.toDateString() %></span>
-                    
-                  
                     </li>
                 </ul>
                 <hr>

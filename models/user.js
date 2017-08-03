@@ -10,16 +10,19 @@ const userSchema = new Schema({
   email: {type: String, unique: true, lowercase: true, required: [true, 'Email is required']},
   password: {type: String, required: [true,'Password is required']},
   comments: [{type: Schema.Types.ObjectId, ref: 'comment'}],
-  blogs: [{type: Schema.Types.ObjectId, ref: 'blog'}]
+  blogs: [{type: Schema.Types.ObjectId, ref: 'blog'}],
+  createPassword: {type: Boolean, default: false}
 })
 
 // On Save hook, encrypt password
 // before saving a model, run this function
 userSchema.pre('save', function(next) {
+
   // getting access to the user model
   // user is an instance of the usermodel
   // user has a specific email and password that we could reference with user.email and user.password
   const user = this;
+  if (!user.createPassword) next()
 
   // generate a salt then run callback
   // salt is randomly generated data that is used for hashing passwords
@@ -32,6 +35,7 @@ userSchema.pre('save', function(next) {
 
       // overwrite plain text password with encrypted password
       user.password = hash;
+      user.createPassword = false
       next();
     });
   });
