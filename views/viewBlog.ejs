@@ -114,14 +114,16 @@
 	    </form>
 	<% } %>
 
-	<% if (user) { %>
-	<form action="/blogs/<%= blog._id %>/comment/create" method="post">
-	<input type="text" name="comment">
-	<input type="submit" value="Submit comment">
+	
+	<form action="/blogs/<%= blog._id %>/comment" method="POST">
+	<textarea name="comment"
+    	rows="10" cols="50">Write something here
+    </textarea>
+	<input type="submit" value="Post comment">
 	</form>
-	<% } else { %>
+	
 	<a href="/signin"><button>Log in to write a comment</button></a>
-	<% } %>
+	
  	<p><a href="/blogs"><button>Back to Blogs</button></a></p>
 
 

@@ -19,7 +19,9 @@ router.get('/', BlogsController.viewAllBlogs);
 router.get('/create', requireAuth, BlogsController.viewCreateBlog);
 router.get('/:id', BlogsController.viewChoice);
 router.get('/update/:id', BlogsController.viewUpdate);
+router.get('/:id/comment', requireAuth, BlogsController.viewCommentBlog);
 
+router.post('/:id/comment', requireAuth, BlogsController.commentBlog);
 router.post('/create', requireAuth, BlogsController.createBlog);
 router.post('/update/:id', BlogsController.update);
 router.post('/delete/:id', BlogsController.delete);

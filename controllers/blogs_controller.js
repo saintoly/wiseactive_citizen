@@ -1,5 +1,6 @@
 const Blog      = require('../models/blogs')
 const User      = require('../models/user')
+const Comment   = require('../models/comments')
 
 const passportService = require('../services/passport')
 const passport = require('passport')
@@ -44,6 +45,7 @@ const controller = {
  	 	}
  	})
   },
+
   viewChoice (req, res, next) {
     passport.authenticate('jwt', function(err, user, info) {
       Blog.findById(req.params.id).populate('author').exec(function(error, blog) {
@@ -56,6 +58,38 @@ const controller = {
       })
     })(req, res, next)
   },
+
+
+    viewCommentBlog(req, res) {
+     res.render('viewBlog')
+   },
+
+  commentBlog(req, res) {
+
+  const comment = {
+    comment: req.body.comment,
+    author: req.params.id
+  }
+
+  Comment.create(comment, (error, comment) =>  {
+    if (error) {
+      console.log(error)
+    } else {
+      User.findById(req.params.id, (error, user) => {
+        user.comments.push(comment)
+        console.log(comment)
+        user.save((error, savedUser) => {
+          if (error) {
+            console.log(error)
+          } else{
+          res.redirect('/blogs')
+        }
+    }  )
+     })
+    }
+  })
+  },
+
 
   viewUpdate(req, res) {
      
